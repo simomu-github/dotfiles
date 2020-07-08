@@ -124,6 +124,13 @@ stty stop undef
 
 export LS_COLORS="${LS_COLORS}di=00;36:"
 
+PATH="$HOME/.rbenv/bin:$PATH"
+type rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+
+PATH="$HOME/.tfenv/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/go/bin:$PATH"
+
 type direnv > /dev/null 2>&1 && eval "$(direnv hook bash)"
 type kubectl > /dev/null 2>&1 && source <(kubectl completion bash)
 

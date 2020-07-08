@@ -133,6 +133,7 @@ type rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 PATH="$HOME/.tfenv/bin:$PATH"
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/go/bin:$PATH"
 
 if [ -f "/home/akiaki/google-cloud-sdk/path.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "/home/akiaki/google-cloud-sdk/completion.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/completion.zsh.inc"; fi
