@@ -1,10 +1,14 @@
 #!/bin/bash
 
+set -eu
+
 DOT_FILES=(.bashrc .bash_aliases .vimrc .gitconfig .tmux.conf .editorconfig .clang-format .zshrc)
 
 for file in ${DOT_FILES[@]}
 do
-	ln -s $HOME/dotfiles/$file $HOME/$file
+	if [ ! -e $HOME/$file ]; then
+		ln -s $HOME/dotfiles/$file $HOME/$file
+	fi
 done
 
 if [ ! -e ~/.vim/bundle ]; then
