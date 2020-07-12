@@ -138,4 +138,14 @@ PATH="$HOME/.local/go/bin:$PATH"
 if [ -f "/home/akiaki/google-cloud-sdk/path.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "/home/akiaki/google-cloud-sdk/completion.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/completion.zsh.inc"; fi
 
+if [ $(uname -r | grep -i 'Microsoft') ]; then
+    export CHROMEPATH="/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+    alias chrome="exec_chrome"
+fi
+
+function exec_chrome()
+{
+    $CHROMEPATH
+}
+
 cat /home/${USER}/dotfiles/moai.ansi

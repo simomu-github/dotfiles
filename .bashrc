@@ -134,4 +134,15 @@ PATH="$HOME/.local/go/bin:$PATH"
 type direnv > /dev/null 2>&1 && eval "$(direnv hook bash)"
 type kubectl > /dev/null 2>&1 && source <(kubectl completion bash)
 
+
+if [ $(uname -r | grep -i 'Microsoft') ]; then
+    export CHROMEPATH="/mnt/c/Program\\ Files\\ \(x86\)/Google/Chrome/Application/chrome.exe"
+    alias chrome="${CHROMEPATH}"
+fi
+
+function exec_chrome()
+{
+    $CHROMEPATH
+}
+
 cat /home/${USER}/dotfiles/moai.ansi
