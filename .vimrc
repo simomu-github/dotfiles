@@ -201,6 +201,7 @@ NeoBundle 'cohama/lexima.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'fatih/vim-go'
 call neobundle#end()
 
 filetype plugin indent on
