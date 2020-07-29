@@ -148,4 +148,31 @@ function exec_chrome()
     $CHROMEPATH
 }
 
+function start_tmux_automatic()
+{
+    if [ -z "$TMUX" ]; then
+        if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
+            # detached session exists
+            tmux list-sessions
+            echo -n "Tmux: attach? (y/N/num) "
+            read
+            if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+                tmux attach-session
+                if [ $? -eq 0 ]; then
+                    return 0
+                fi
+            elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+                tmux attach -t "$REPLY"
+                if [ $? -eq 0 ]; then
+                    return 0
+                fi
+            fi
+        fi
+
+        tmux new-session && echo "tmux created new session"
+    fi
+}
+
+start_tmux_automatic
+
 cat /home/${USER}/dotfiles/moai.ansi
