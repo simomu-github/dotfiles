@@ -145,7 +145,7 @@ fi
 
 function exec_chrome()
 {
-    $CHROMEPATH
+    $CHROMEPATH $@
 }
 
 function start_tmux_automatic()
