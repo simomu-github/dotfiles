@@ -135,18 +135,12 @@ PATH="$HOME/.tfenv/bin:$PATH"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/go/bin:$PATH"
 
-if [ -f "/home/akiaki/google-cloud-sdk/path.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "/home/akiaki/google-cloud-sdk/completion.zsh.inc"  ]; then . "/home/akiaki/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "/home/${USER}/google-cloud-sdk/path.zsh.inc"  ]; then . "/home/${USER}/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "/home/${USER}/google-cloud-sdk/completion.zsh.inc"  ]; then . "/home/${USER}/google-cloud-sdk/completion.zsh.inc"; fi
 
 if [ $(uname -r | grep -i 'Microsoft') ]; then
-    export CHROMEPATH="/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-    alias chrome="exec_chrome"
+    alias open="powershell.exe /c start"
 fi
-
-function exec_chrome()
-{
-    $CHROMEPATH $@
-}
 
 function start_tmux_automatic()
 {
