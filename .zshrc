@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/${USER}/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -138,8 +138,8 @@ PATH="$HOME/.tfenv/bin:$PATH"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/go/bin:$PATH"
 
-if [ -f "/home/${USER}/google-cloud-sdk/path.zsh.inc"  ]; then . "/home/${USER}/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "/home/${USER}/google-cloud-sdk/completion.zsh.inc"  ]; then . "/home/${USER}/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/completion.zsh.inc"; fi
 
 if [ $(uname -r | grep -i 'Microsoft') ]; then
     alias open="powershell.exe /c start"
@@ -172,4 +172,4 @@ function start_tmux_automatic()
 
 start_tmux_automatic
 
-cat /home/${USER}/dotfiles/moai.ansi
+cat $HOME/dotfiles/moai.ansi
