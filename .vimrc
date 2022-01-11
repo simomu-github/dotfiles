@@ -254,6 +254,8 @@ call SetCustomHilight()
 
 " キャッシュを終了時に削除しない
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 100000
+let g:ctrlp_max_depth = 10
 
 " gitgutterまわりの設定
 set updatetime=250
