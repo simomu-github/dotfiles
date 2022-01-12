@@ -202,6 +202,9 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'jparise/vim-graphql'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'leafgarland/typescript-vim'
 call neobundle#end()
 
 filetype plugin indent on
