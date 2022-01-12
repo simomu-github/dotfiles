@@ -131,7 +131,7 @@ PATH="$HOME/.rbenv/bin:$PATH"
 type rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 PATH="$HOME/.nodenv/bin:$PATH"
-type rbenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+type nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
 PATH="$HOME/.tfenv/bin:$PATH"
 
