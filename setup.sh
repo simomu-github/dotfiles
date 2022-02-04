@@ -36,3 +36,18 @@ if [ ! -e ~/.oh-my-zsh ]; then
 		chmod g-w,o-w $dir
 	done
 fi
+
+if [ ! -e ~/.vscode ]; then
+	mkdir -p ~/.vscode
+fi
+
+if [ ! -e ~/.vscode/settings.json ]; then
+	ln -s ~/dotfiles/settings.json ~/.vscode/settings.json
+fi
+
+if $(uname -r | grep -ivq 'Microsoft'); then
+	cat ~/dotfiles/vscode_extensions | while read line
+	do
+		type code > /dev/null 2>&1 && code --install-extension $line
+	done
+fi
