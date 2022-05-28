@@ -165,6 +165,15 @@ if executable('clang-format')
   augroup END
 endif
 
+" WSL 使用時のみ w レジスタの内容をクリップボードに送る
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.regname == 'w' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 " プラグイン系
 " 以下を追記
 set nocompatible
