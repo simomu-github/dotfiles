@@ -28,6 +28,8 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'jparise/vim-graphql'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'mattn/vim-lsp-settings'
 call neobundle#end()
 
 filetype plugin indent on
