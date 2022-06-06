@@ -14,6 +14,7 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
+set backspace=indent,eol,start
 
 " F10 で paste モードをトグルする
 set pastetoggle=<F10>
@@ -147,6 +148,11 @@ if executable('clang-format')
     autocmd BufWrite,FileWritePre,FileAppendPre *.h call ClangFormat()
   augroup END
 endif
+
+augroup markdown_prettier
+  autocmd!
+  autocmd BufWrite,FileWritePre,FileAppendPre *.md Prettier
+augroup END
 
 " paste modeの自動化
 if &term =~ "xterm"
