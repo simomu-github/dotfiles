@@ -107,6 +107,12 @@ alias git-delete-merged-branch="git checkout master && git branch --merged | gre
 
 alias ll="ls -la"
 
+function git_checkout_with_peco()
+{
+    git checkout $(git branch | peco)
+}
+alias gitc="git_checkout_with_peco"
+
 function peco-history-selection() {
     local tac
     if which tac > /dev/null; then
