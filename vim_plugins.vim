@@ -29,7 +29,11 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'mattn/vim-lsp-settings'
+" NeoBundle 'mattn/vim-yoshi'
 NeoBundle 'prettier/vim-prettier'
+" NeoBundle 'lambdalisue/fern.vim'
+" NeoBundle 'mg979/vim-visual-multi'
+NeoBundle 'github/copilot.vim'
 call neobundle#end()
 
 filetype plugin indent on

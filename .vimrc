@@ -20,6 +20,7 @@ set backspace=indent,eol,start
 set pastetoggle=<F10>
 
 " 見た目系
+syntax on
 " 行番号を表示
 set number
 " 現在の行を強調表示
@@ -44,6 +45,8 @@ nnoremap k gk
 " 行頭、行尾移動
 nnoremap <S-h> ^
 nnoremap <S-l> $l
+
+set shortmess-=S
 
 "コメント色変更
 hi Comment ctermfg=lightgreen
@@ -96,6 +99,7 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap * *N
 
 " キーマップ系
 " Tab 操作
@@ -109,6 +113,12 @@ noremap <Space>nn :NERDTreeToggle<CR>
 noremap <Space>nt :NERDTree<CR>
 noremap <Space>nf :NERDTreeFind<CR>
 noremap <Space>nc :NERDTreeClone<CR>
+
+" Fern 操作
+" noremap <Space>nn :Fern . -drawer -toggle -keep<CR>
+" noremap <Space>nt :Fern . -drawer<CR>
+" noremap <Space>nf :Fern . -reveal=% -drawer<CR>
+" noremap <Space>nc :NERDTreeClone<CR>
 
 " CtrlP 操作
 nnoremap s <Nop>
@@ -125,6 +135,12 @@ noremap <C-h> :%s/
 noremap <Space><Tab> :set<Space>expandtab!<CR>
 noremap <Space>ft :set filetype=
 
+function! CopyFilePath()
+  let @* = expand('%')
+endfunction
+
+command! CopyFilePath call CopyFilePath()
+
 " clanf-formatの自動化
 function! ClangFormat()
   let now_line = line(".")
@@ -136,14 +152,15 @@ if executable('clang-format')
   augroup cpp_clang_format
     autocmd!
     autocmd BufWrite,FileWritePre,FileAppendPre *.cpp call ClangFormat()
+    autocmd BufWrite,FileWritePre,FileAppendPre *.c call ClangFormat()
     autocmd BufWrite,FileWritePre,FileAppendPre *.h call ClangFormat()
   augroup END
 endif
 
-augroup markdown_prettier
-  autocmd!
-  autocmd BufWrite,FileWritePre,FileAppendPre *.md Prettier
-augroup END
+" augroup markdown_prettier
+"   autocmd!
+"   autocmd BufWrite,FileWritePre,FileAppendPre *.md Prettier
+" augroup END
 
 " paste modeの自動化
 if &term =~ "xterm"
@@ -208,3 +225,7 @@ set updatetime=250
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
+
+" fern の設定
+let g:fern_disable_startup_warnings = 1
+let g:fern#drawer_keep = 1

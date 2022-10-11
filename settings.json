@@ -27,6 +27,14 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
+  "javascript.validate.enable": false,
+  "editor.formatOnSave": false,
+  "flow.enabled": true,
+  "flow.runOnEdit": false,
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
   "vim.normalModeKeyBindings": [
     {
       "before": [

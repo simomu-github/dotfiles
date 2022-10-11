@@ -146,3 +146,4 @@ function exec_chrome()
 }
 
 cat /home/${USER}/dotfiles/moai.ansi
+. "$HOME/.cargo/env"

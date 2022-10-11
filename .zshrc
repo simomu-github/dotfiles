@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+#
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -68,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker-compose)
+plugins=(git docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,7 +109,23 @@ alias cd="cdpwd"
 alias git-delete-merged-branch="git checkout master && git branch --merged | grep -v '*' | xargs -I % git branch -d %"
 
 alias ll="ls -la"
+function git_checkout_with_peco()
+{
+    git checkout $(git branch | peco)
+}
+alias gitc="git_checkout_with_peco"
+
+function git_force_pull()
+{
+    git reset --hard origin/$(git branch --contains | cut -d " " -f 2)
+}
+alias git_pull_force="git_force_pull"
 alias :qa="exit"
+
+function kuc()
+{
+    kubectl config use-context $(kubectl config get-contexts --output='name' | peco)
+}
 
 function git_checkout_with_peco()
 {
@@ -125,13 +142,17 @@ function peco-history-selection() {
     fi
     BUFFER=$(\history -n 1 | \
         eval $tac | awk '!a[$0]++' | \
-        peco --query "$LBUFFER")
+        peco --query "$LBUFFER" | sed 's/\\n/\n/')
     CURSOR=$#BUFFER
     zle clear-screen
 }
 
 zle -N peco-history-selection
 bindkey '^H' peco-history-selection
+
+function memo() {
+    vim $(ls -1 ~/memo/* | peco)
+}
 
 type direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 type kubectl > /dev/null 2>&1 && source <(kubectl completion zsh)
@@ -142,6 +163,9 @@ type rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 PATH="$HOME/.nodenv/bin:$PATH"
 type nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
+PATH="$HOME/.pyenv/bin:$PATH"
+type pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+
 PATH="$HOME/.tfenv/bin:$PATH"
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -151,9 +175,18 @@ PATH="$(go env GOPATH)/bin:$PATH"
 if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/completion.zsh.inc"; fi
 
+PATH="/opt/homebrew/opt/postgresql@10/bin:$PATH"
+PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+# PATH="$PATH:./node_modules/.bin"
+
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=`which chromium`
+
 if [ $(uname -r | grep -i 'Microsoft') ]; then
     alias open="powershell.exe /c start"
 fi
+
+source $HOME/dotfiles/for_socialplus.zsh
 
 function start_tmux_automatic()
 {
@@ -182,4 +215,27 @@ function start_tmux_automatic()
 
 start_tmux_automatic
 
-cat $HOME/dotfiles/moai.ansi
+function moai() {
+    cat $HOME/dotfiles/moai.ansi
+}
+
+if [ $(($RANDOM % 2)) -eq 0 ]; then
+    moai
+else
+    echo "$(cat $HOME/dotfiles/ff_feed.ansi)"
+fi
+
+# qlty completions
+[ -s "/opt/homebrew/share/zsh/site-functions/_qlty" ] && source "/opt/homebrew/share/zsh/site-functions/_qlty"
+
+# qlty
+export QLTY_INSTALL="$HOME/.qlty"
+export PATH="$QLTY_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/shimomuraakihiro/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
