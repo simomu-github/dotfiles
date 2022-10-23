@@ -106,6 +106,7 @@ alias cd="cdpwd"
 alias git-delete-merged-branch="git checkout master && git branch --merged | grep -v '*' | xargs -I % git branch -d %"
 
 alias ll="ls -la"
+alias :qa="exit"
 
 function git_checkout_with_peco()
 {
