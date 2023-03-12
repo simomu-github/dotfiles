@@ -98,6 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export LS_COLORS="${LS_COLORS}di=00;36:"
+
 function cdpwd ()
 {
 	\cd "$@" && ls && pwd
