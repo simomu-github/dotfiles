@@ -145,6 +145,7 @@ type nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 PATH="$HOME/.tfenv/bin:$PATH"
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/go/bin:$PATH"
 PATH="$(go env GOPATH)/bin:$PATH"
 
 if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
