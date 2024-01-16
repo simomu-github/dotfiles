@@ -123,6 +123,7 @@ noremap <Space>rp :RepliesTwitter<CR>
 " CtrlP 操作
 nnoremap s <Nop>
 nnoremap sp :CtrlPCurWD<CR>
+nnoremap sb :CtrlPBuffer<CR>
 
 noremap gl :ls<CR>:b<Space>
 
