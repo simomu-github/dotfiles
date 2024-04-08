@@ -110,16 +110,6 @@ noremap <Space>nt :NERDTree<CR>
 noremap <Space>nf :NERDTreeFind<CR>
 noremap <Space>nc :NERDTreeClone<CR>
 
-noremap <Space>rt :RefreshTwitter<CR>
-noremap <Space>tw :FriendsTwitter<CR><C-w>k<C-w>_
-noremap <Space>tn :NextTwitter<CR>
-noremap <Space>lt :ListTwitter<Space>
-noremap <Space>l1 :ListTwitter<Space>list<CR>
-noremap <Space>l2 :ListTwitter<Space>RiG<CR>
-noremap <Space>l3 :ListTwitter<Space>人<CR>
-noremap <Space>ut :UserTwitter<Space>
-noremap <Space>rp :RepliesTwitter<CR>
-
 " CtrlP 操作
 nnoremap s <Nop>
 nnoremap sp :CtrlPCurWD<CR>
@@ -191,10 +181,6 @@ function! SetCustomHilight()
 endfunction
 
 call SetCustomHilight()
-
-" TwitVim の設定
-let twitvim_browser_cmd = 'google-chrome'
-let twitvim_count = 40
 
 " NERDTree の設定
 let NERDTreeShowHidden=1
