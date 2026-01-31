@@ -8,6 +8,7 @@
     co = commit
     rb = rebase
 [push]
-	default = upstream
+    default = upstream
+    autoSetupRemote = true
 [include]
-	path = .gituser
+    path = .gituser
