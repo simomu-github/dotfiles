@@ -105,16 +105,22 @@ function cdpwd ()
 	\cd "$@" && ls && pwd
 }
 alias cd="cdpwd"
-alias git-delete-merged-branch="git checkout master && git branch --merged | grep -v '*' | xargs -I % git branch -d %"
+alias git-delete-merged-branch="git checkout main && git branch --merged | grep -v '*' | xargs -I % git branch -d %"
+alias git-delete-merged-branch-master="git checkout master && git branch --merged | grep -v '*' | xargs -I % git branch -d %"
 
 alias ll="ls -la"
 alias :qa="exit"
+alias peco="TERM=xterm peco"
 
 function git_checkout_with_peco()
 {
     git checkout $(git branch | peco)
 }
 alias gitc="git_checkout_with_peco"
+
+if [ $(uname -r | grep -i 'Microsoft') ]; then
+    alias open="powershell.exe /c start"
+fi
 
 function peco-history-selection() {
     local tac
@@ -150,10 +156,7 @@ PATH="$(go env GOPATH)/bin:$PATH"
 
 if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc"  ]; then . "${HOME}/google-cloud-sdk/completion.zsh.inc"; fi
-
-if [ $(uname -r | grep -i 'Microsoft') ]; then
-    alias open="powershell.exe /c start"
-fi
+if [ -f "$HOME/.cargo/env" ]; then . "$HOME/.cargo/env"; fi
 
 function start_tmux_automatic()
 {
