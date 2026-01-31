@@ -30,7 +30,7 @@ fi
 
 if [ ! -e ~/.oh-my-zsh ]; then
 	git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
-	target_dirs=('/home/akiaki/.oh-my-zsh/plugins/git' '/home/akiaki/.oh-my-zsh/plugins' '/home/akiaki/.oh-my-zsh')
+	target_dirs=("$(HOME)/.oh-my-zsh/plugins/git" "$(HOME)/.oh-my-zsh/plugins" "$(HOME)/.oh-my-zsh")
 	for dir in ${target_dirs[@]}
 	do
 		chmod g-w,o-w $dir
